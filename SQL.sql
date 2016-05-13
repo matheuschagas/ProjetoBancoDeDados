@@ -79,3 +79,8 @@ SELECT Funcionario.nome_completo as funcionario, count(Reserva.id_Reserva), sum(
 FROM Funcionario, Reserva, Equipamento
 WHERE Reserva.id_Funcionario = Funcionario.id_Funcionario AND Reserva.id_Equipamento = Equipamento.id_Equipamento GROUP BY funcionario ORDER BY custoTotal DESC;
  
+
+
+
+-- Inserções Ex.
+INSERT INTO Funcionario(id_Funcionario, senha, nome_completo, data_nascimento, data_admissao, sexo, endereco1, endereco2, salario_mensal) VALUES(3, '1235', 'Douglas Terra', '01/02/1960', '01/02/2006', 'M', 'Rua Paranaue, 738', 'Porto Alegre - RS', 1050.02);
