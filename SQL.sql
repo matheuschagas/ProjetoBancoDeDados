@@ -31,45 +31,29 @@ CREATE TABLE IF NOT EXISTS `Equipamentos`.`TipoEquipamento` (
 -- -----------------------------------------------------
 -- Tabela `Equipamentos`.`Equipamento`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Equipamentos`.`Equipamento` (
-  `id_Equipamento` INT NOT NULL AUTO_INCREMENT,
-  `id_TipoEquipamento` INT NOT NULL,
-  `data_aquisicao` DATE NOT NULL,
-  `descricao` VARCHAR(100) NOT NULL,
-  `custo_diaria` FLOAT NOT NULL,
-  `em_manutencao` TINYINT(1) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`id_Equipamento`),
-  INDEX `fk_Equipamento_TipoEquipamento_idx` (`id_TipoEquipamento` ASC),
-  CONSTRAINT `fk_Equipamento_TipoEquipamento`
-    FOREIGN KEY (`id_TipoEquipamento`)
-    REFERENCES `Equipamentos`.`TipoEquipamento` (`id_TipoEquipamento`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+CREATE TABLE Equipamento (
+  id_Equipamento INT PRIMARY KEY,
+  id_TipoEquipamento INT,
+  data_aquisicao DATE,
+  descricao Varchar(100) NOT NULL,
+  custo_diaria Number(2) NOT NULL,
+  em_manutencao Number(1,0) NOT NULL,
+  FOREIGN KEY (id_TipoEquipamento) REFERENCES TipoEquipamento (id_TipoEquipamento)
+);
 
 
 -- -----------------------------------------------------
 -- Tabela `Equipamentos`.`Reserva`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Equipamentos`.`Reserva` (
-  `id_Reserva` INT NOT NULL AUTO_INCREMENT,
-  `id_Funcionario` INT NOT NULL,
-  `id_Equipamento` INT NOT NULL,
-  `data_inicial` DATE NOT NULL,
-  `data_final` DATE NOT NULL,
-  `emprestimo` TINYINT(1) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`id_Reserva`),
-  INDEX `fk_Reserva_Funcionario1_idx` (`id_Funcionario` ASC),
-  INDEX `fk_Reserva_Equipamento1_idx` (`id_Equipamento` ASC),
-  CONSTRAINT `fk_Reserva_Funcionario1`
-    FOREIGN KEY (`id_Funcionario`)
-    REFERENCES `Equipamentos`.`Funcionario` (`id_Funcionario`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Reserva_Equipamento1`
-    FOREIGN KEY (`id_Equipamento`)
-    REFERENCES `Equipamentos`.`Equipamento` (`id_Equipamento`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+CREATE TABLE Reserva (
+  id_Reserva INT PRIMARY KEY,
+  id_Funcionario INT NOT NULL,
+  id_Equipamento INT NOT NULL,
+  data_inicial DATE NOT NULL,
+  data_final DATE NOT NULL,
+  FOREIGN KEY (id_Funcionario) REFERENCES Funcionario (id_Funcionario),
+  FOREIGN KEY (id_Equipamento) REFERENCES Equipamento (id_Equipamento)
+);
     
     
 -- Consulta 1
