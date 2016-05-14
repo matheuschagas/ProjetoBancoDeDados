@@ -67,17 +67,18 @@ SELECT * FROM Equipamento WHERE descricao LIKE '%busca%';
 INSERT INTO Reserva(id_Reserva, id_Funcionario, id_Equipamento, data_inicial, data_final) VALUES(1, 1, 1, '01/01/2016', '10/01/2016');
 
 -- Consulta 4
-SELECT Funcionario.nome_completo, Equipamento.descricao, Reserva.data_inicial, Reserva.data_final 
-FROM Reserva, Funcionario, Equipamento 
-WHERE Reserva.id_Funcionario = Funcionario.id_Funcionario AND Reserva.id_Equipamento = Equipamento.id_Equipamento AND Reserva.data_inicial > CURRENT_DATE;
+SELECT fun.nome_completo, eqp.descricao, rsr.data_inicial, rsr.data_final 
+FROM Reserva rsr INNER JOIN Funcionario fun ON rsr.id_Funcionario = fun.id_Funcionario
+INNER JOIN Equipamento eqp ON rsr.id_Equipamento = eqp.id_Equipamento AND rsr.data_inicial > CURRENT_DATE;
 
 -- Consulta 5
 SELECT Equipamento.descricao, count(Reserva.id_Reserva), sum(Equipamento.custo_diaria) FROM Equipamento LEFT JOIN Reserva ON Reserva.id_Equipamento = Equipamento.id_Equipamento GROUP BY Equipamento.descricao;
 
 -- Consulta 6
-SELECT Funcionario.nome_completo as funcionario, count(Reserva.id_Reserva), sum(Equipamento.custo_diaria) as custoTotal
-FROM Funcionario, Reserva, Equipamento
-WHERE Reserva.id_Funcionario = Funcionario.id_Funcionario AND Reserva.id_Equipamento = Equipamento.id_Equipamento GROUP BY funcionario ORDER BY custoTotal DESC;
+SELECT fun.nome_completo as nomeFuncionario, count(rsr.id_Reserva), sum(eqp.custo_diaria) as custoTotal
+FROM Funcionario fun INNER JOIN Reserva rsr ON rsr.id_Funcionario = fun.id_Funcionario
+INNER JOIN Equipamento eqp ON rsr.id_Equipamento = eqp.id_Equipamento
+GROUP BY fun.nome_completo ORDER BY custoTotal DESC;
  
 
 
