@@ -1,11 +1,5 @@
 -- -----------------------------------------------------
--- Banco Equipamentos
--- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `Equipamentos` DEFAULT CHARACTER SET utf8 ;
-USE `Equipamentos` ;
-
--- -----------------------------------------------------
--- Tabela `Equipamentos`.`Funcionario`
+-- Tabela Funcionario
 -- -----------------------------------------------------
 CREATE TABLE Funcionario (
   id_Funcionario INT PRIMARY KEY,
@@ -20,7 +14,7 @@ CREATE TABLE Funcionario (
 
 
 -- -----------------------------------------------------
--- Tabela `Equipamentos`.`TipoEquipamento`
+-- Tabela TipoEquipamento
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Equipamentos`.`TipoEquipamento` (
   `id_TipoEquipamento` INT NOT NULL AUTO_INCREMENT,
@@ -29,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `Equipamentos`.`TipoEquipamento` (
 
 
 -- -----------------------------------------------------
--- Tabela `Equipamentos`.`Equipamento`
+-- Tabela Equipamento
 -- -----------------------------------------------------
 CREATE TABLE Equipamento (
   id_Equipamento INT PRIMARY KEY,
@@ -43,7 +37,7 @@ CREATE TABLE Equipamento (
 
 
 -- -----------------------------------------------------
--- Tabela `Equipamentos`.`Reserva`
+-- Tabela Reserva
 -- -----------------------------------------------------
 CREATE TABLE Reserva (
   id_Reserva INT PRIMARY KEY,
