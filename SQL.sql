@@ -16,10 +16,10 @@ CREATE TABLE Funcionario (
 -- -----------------------------------------------------
 -- Tabela TipoEquipamento
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Equipamentos`.`TipoEquipamento` (
-  `id_TipoEquipamento` INT NOT NULL AUTO_INCREMENT,
-  `nome` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id_TipoEquipamento`));
+CREATE TABLE TipoEquipamento (
+  id_TipoEquipamento INT PRIMARY KEY,
+  nome VARCHAR(45) NOT NULL,
+  );
 
 
 -- -----------------------------------------------------
