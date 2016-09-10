@@ -4,7 +4,7 @@
 CREATE TABLE Produto (
   idProduto INTEGER PRIMARY KEY,
   nomeProduto VARCHAR(45) NOT NULL,
-  preco DECIMAL(2) NOT NULL,
+  preco DECIMAL(30,2) NOT NULL,
   tipoProduto VARCHAR(45) NULL
    );
 
@@ -26,7 +26,7 @@ CREATE TABLE Cliente (
   nome VARCHAR(30) NOT NULL,
   endereco VARCHAR(100) NULL,
   telefone VARCHAR(15) NULL,
-  limiteDeCredito DECIMAL(2) NOT NULL,
+  limiteDeCredito DECIMAL(30, 2) NOT NULL,
   TipoCliente_idTipoCliente INT NOT NULL,
     FOREIGN KEY (TipoCliente_idTipoCliente)
     REFERENCES TipoCliente (idTipoCliente)
@@ -42,7 +42,7 @@ CREATE TABLE Pedido (
   data DATE NOT NULL,
   Produto_idProduto INT NOT NULL,
   quantidade INT NOT NULL,
-  valorTotal DECIMAL(2) NOT NULL,
+  valorTotal DECIMAL NOT NULL,
     FOREIGN KEY (Produto_idProduto)
     REFERENCES Produto (idProduto),
     FOREIGN KEY (Cliente_idCliente)
