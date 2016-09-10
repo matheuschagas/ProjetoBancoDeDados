@@ -3,9 +3,9 @@
 -- -----------------------------------------------------
 CREATE TABLE Produto (
   idProduto INTEGER PRIMARY KEY,
-  nomeProduto NVARCHAR(45) NOT NULL,
+  nomeProduto VARCHAR(45) NOT NULL,
   preco DECIMAL(2) NOT NULL,
-  tipoProduto NVARCHAR(45) NULL
+  tipoProduto VARCHAR(45) NULL
    );
 
 
@@ -23,8 +23,8 @@ CREATE TABLE TipoCliente (
 -- -----------------------------------------------------
 CREATE TABLE Cliente (
   idCliente INTEGER PRIMARY KEY,
-  nome NVARCHAR(30) NOT NULL,
-  endereco NVARCHAR(100) NULL,
+  nome VARCHAR(30) NOT NULL,
+  endereco VARCHAR(100) NULL,
   telefone VARCHAR(15) NULL,
   limiteDeCredito DECIMAL(2) NOT NULL,
   TipoCliente_idTipoCliente INT NOT NULL,
