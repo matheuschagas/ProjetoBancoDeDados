@@ -116,11 +116,11 @@ SELECT p.nomeProduto
 	, count(pe.idPedido) as qtdPedidos
 	, sum(pe.quantidade) as qtdTotal
 	, sum(pe.valorTotal) as totalVendido
-	, (sum(pe.quantidade)*p.preco - sum(pe.valorTotal)) as desconto
+	, (sum(pe.quantidade)*(SELECT preco FROM Produto WHERE idProduto = p.idProduto)) - sum(pe.valorTotal) as desconto
 FROM Produto p
 	LEFT JOIN Pedido pe
 		ON pe.Produto_idProduto = p.idProduto
-	GROUP BY p.idProduto
+GROUP BY p.idProduto, p.nomeProduto;
 
 -- Operação 6
 SELECT c.nome
