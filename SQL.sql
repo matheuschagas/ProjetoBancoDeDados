@@ -133,4 +133,11 @@ FROM Cliente c
 	ORDER BY valorTotal DESC
 
 -- Operação 7
+-- Selecionar os tipos de clientes e a soma dos valores de suas compras
 
+SELECT tp.tipoCliente,
+        sum(p.valorTotal) as valorTotal
+        FROM TIPOCLIENTE tp
+        INNER JOIN CLIENTE c ON c.TIPOCLIENTE_IDTIPOCLIENTE = tp.IDTIPOCLIENTE
+        INNER JOIN PEDIDO p ON p.CLIENTE_IDCLIENTE = c.IDCLIENTE
+        GROUP BY tp.IDTIPOCLIENTE, tp.TIPOCLIENTE
