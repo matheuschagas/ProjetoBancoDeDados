@@ -65,11 +65,11 @@ SELECT c.idCliente
 	, c.endereco
 	, c.telefone
 	, c.limiteDeCredito
-	, c.tipoCliente 
+	, tc.tipoCliente 
 FROM Cliente c 
 	INNER JOIN TipoCliente tc
 		ON tc.idTipoCliente = c.TipoCliente_idTipoCliente
-			AND c.nome LIKE '%Fulano%'; 
+			AND c.nome LIKE '%Fulano%';
 
 ---- Busca Produto
 SELECT idProduto
@@ -129,7 +129,7 @@ SELECT c.nome
 FROM Cliente c
 	INNER JOIN Pedido pe
 		ON pe.Cliente_idCliente = c.idCliente
-	GROUP BY c.idCliente
+	GROUP BY c.idCliente, c.nome
 	ORDER BY valorTotal DESC
 
 -- Operação 7
