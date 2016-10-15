@@ -1,4 +1,4 @@
--- Academicos: Franco, Kim, Matheus Marrane
+-- Academicos: Franco Fiorini, Kim Schaurich, Matheus Marrane
 
 -- -----------------------------------------------------
 -- Table Produto
