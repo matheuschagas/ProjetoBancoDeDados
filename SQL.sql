@@ -138,11 +138,9 @@ FROM Cliente c
 	ORDER BY valorTotal DESC;
 
 -- Operação 7
--- Selecionar os tipos de clientes e a soma dos valores de suas compras
+-- Selecionar clientes vips que possuem pelo menos um pedido
 
-SELECT tp.tipoCliente,
-        sum(p.valorTotal) as valorTotal
-        FROM TIPOCLIENTE tp
-        INNER JOIN CLIENTE c ON c.TIPOCLIENTE_IDTIPOCLIENTE = tp.IDTIPOCLIENTE
-        INNER JOIN PEDIDO p ON p.CLIENTE_IDCLIENTE = c.IDCLIENTE
-        GROUP BY tp.IDTIPOCLIENTE, tp.TIPOCLIENTE;
+SELECT c.NOME
+        FROM CLIENTE c
+WHERE c.TIPOCLIENTE_IDTIPOCLIENTE = 1 AND
+EXISTS (SELECT * FROM PEDIDO p WHERE p.CLIENTE_IDCLIENTE = c.IDCLIENTE)
